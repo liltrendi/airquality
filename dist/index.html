@@ -1,0 +1,140 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Air Quality</title>
+  <meta name="description" content="An interactive project where users will select an Indian city and have their local air quality displayed in cigarettes and particulate matter.">
+  <meta name="author" content="Brian Njogu">
+
+  <meta property="og:title" content="Air Quality">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="An interactive project where users will select an Indian city and have their local air quality displayed in cigarettes and particulate matter.">
+
+  <link rel="stylesheet" href="./dist/main.css">
+</head>
+
+<body>
+  
+  <div class="hero-image">
+    <div class="hero-text">
+      <h1 class="hero-title"></h1>
+    </div>
+  </div>
+
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title article-info_1-byline"></h5>
+      <p class="card-text article-info_1-date"></p>
+      <a href="#" class="btn btn-secondary article-info_1-category"></a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <div class="btn-group" role="group" aria-label="Language selector">
+          <button type="button" id="englishBtn" class="btn btn-primary">English</button>
+          <button type="button" id="hindiBtn" class="btn btn-secondary">Hindi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_1_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_2_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_3_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_4_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_5_value"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-4">
+      <select class="form-select" id="citySelect" aria-label="City selection">
+      </select>
+    </div>
+  </div>
+
+  <div class="container city_info">
+    <div class="row mt-4">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header city_name"></div>
+        <div class="card-body text-dark">
+          <p class="card-text city_aqi"></p>
+          <p class="card-text city_cigg"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_6_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_7_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_8_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_9_value"></p>
+      </div>
+    </div>
+
+    
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-sm-12">
+        <p class="p_10_value"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="dist/bundle.js"></script>
+</body>
+</html>
