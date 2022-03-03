@@ -3,14 +3,9 @@ const jsonData = {
     hindi: require("../data/hindi.json"),
 }
 
-const getJsonDataInLocale = () => {
-    let language = localStorage.getItem("language");
-    if(!language) return jsonData.english;
-    return jsonData[language] || jsonData.english;
-}
-
-const setLanguageInUse = (language = "english") => {
-    localStorage.setItem("language", language);
+const getJsonDataInLocale = (language) => {
+    let data = jsonData[language] || jsonData.english;
+    return data;
 }
 
 const buildHeroContent = (data) => {
@@ -40,6 +35,11 @@ const buildParagraphs = (data) => {
 
 const generateCitySelectOptions = (data) => {
     let select = document.getElementById("citySelect");
+
+    if(select?.options?.length > 0){
+        for(let index of new Array(select.options.length)) select.remove(index);
+    }
+
     select.options[select.options.length] = new Option(data?.["compare-tabs_1_title"], null);
 
     const cities = Object.keys(data)?.filter(item => item?.startsWith("compare-tabs_1_city_") && item?.endsWith("name"))?.map(item => ({name: data[item], value: item}));
@@ -70,9 +70,31 @@ const addEventListenerForCitySelection = (data) => {
     })
 }
 
-const initializeApp = () => {
-    setLanguageInUse();
-    let data = getJsonDataInLocale();
+const addEventListenerForLanguageSelection = () => {
+    let englishBtn = document.getElementById("englishBtn");
+    let hindiBtn = document.getElementById("hindiBtn");
+
+    englishBtn.addEventListener("click", () => {
+        englishBtn.classList.add("btn-primary");
+        englishBtn.classList.remove("btn-secondary");
+        hindiBtn.classList.add("btn-secondary");
+        hindiBtn.classList.remove("btn-primary");
+
+        initializeApp("english");
+    })
+
+    hindiBtn.addEventListener("click", () => {
+        hindiBtn.classList.add("btn-primary");
+        hindiBtn.classList.remove("btn-secondary");
+        englishBtn.classList.add("btn-secondary");
+        englishBtn.classList.remove("btn-primary");
+
+        initializeApp("hindi");
+    })
+}
+
+const initializeApp = (language = "english") => {
+    let data = getJsonDataInLocale(language);
     buildHeroContent(data);
     buildArticleHeader(data);
     buildParagraphs(data);
@@ -81,3 +103,4 @@ const initializeApp = () => {
 }
 
 initializeApp();
+addEventListenerForLanguageSelection();
