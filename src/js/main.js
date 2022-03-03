@@ -18,11 +18,19 @@ const buildHeroContent = (data) => {
     document.querySelector(".hero-title").textContent = data.hero_1_title;
 }
 
+const buildArticleHeader = (data) => {
+    document.querySelector(".article-info_1-byline").textContent = data?.["article-info_1_byline"];
+    document.querySelector(".article-info_1-date").textContent = data?.["article-info_1_date"];
+    document.querySelector(".article-info_1-category").textContent = data?.["article-info_1_category"];
+    document.querySelector(".article-info_1-category").href = data?.["article-info_1_category_url"];
+}
+
 const initializeApp = () => {
     setLanguageInUse();
     let data = getJsonDataInLocale();
     console.log("json", data);
     buildHeroContent(data);
+    buildArticleHeader(data);
 }
 
 initializeApp();
