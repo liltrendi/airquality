@@ -25,12 +25,21 @@ const buildArticleHeader = (data) => {
     document.querySelector(".article-info_1-category").href = data?.["article-info_1_category_url"];
 }
 
+const buildParagraphs = (data) => {
+    document.querySelector(".p_1_value").textContent = data.p_1_value;
+    document.querySelector(".p_2_value").textContent = data.p_2_value;
+    document.querySelector(".p_3_value").textContent = data.p_3_value;
+    document.querySelector(".p_4_value").textContent = data.p_4_value;
+    document.querySelector(".p_5_value").textContent = data.p_5_value;
+}
+
 const initializeApp = () => {
     setLanguageInUse();
     let data = getJsonDataInLocale();
     console.log("json", data);
     buildHeroContent(data);
     buildArticleHeader(data);
+    buildParagraphs(data);
 }
 
 initializeApp();
