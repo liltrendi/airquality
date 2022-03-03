@@ -19,3 +19,7 @@ body, html {
   transform: translate(-50%, -50%);
   color: white;
 }
+
+.city_info {
+  display: none;
+}

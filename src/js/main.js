@@ -38,16 +38,36 @@ const buildParagraphs = (data) => {
     document.querySelector(".p_10_value").textContent = data.p_10_value;
 }
 
-const setCitySelectionTitle = (data) => {
-    document.querySelector("#defaultSelectOption").textContent = data?.["compare-tabs_1_title"];
-}
-
 const generateCitySelectOptions = (data) => {
-    const cities = Object.keys(data)?.filter(item => item?.startsWith("compare-tabs_1_city_") && item?.endsWith("name"))?.map(item => ({name: data[item], value: item}));
     let select = document.getElementById("citySelect");
+    select.options[select.options.length] = new Option(data?.["compare-tabs_1_title"], null);
+
+    const cities = Object.keys(data)?.filter(item => item?.startsWith("compare-tabs_1_city_") && item?.endsWith("name"))?.map(item => ({name: data[item], value: item}));
+    
     for(let city of cities){
         select.options[select.options.length] = new Option(city.name, city.value);
     }
+}
+
+const setSelectedCityCard = (data, key) => {
+    let slicedKey = key?.slice(0, -4);
+    let aqi = data?.[`${slicedKey}aqi`];
+    let cigg = data?.[`${slicedKey}cigg`];
+    document.querySelector(".city_info").style.display = "block";
+    document.querySelector(".city_name").innerHTML = `<span><strong>${data?.[key]}</strong></span>`;
+    document.querySelector(".city_aqi").innerHTML = `<span><strong>AQI: </strong> ${aqi}</span>`;
+    document.querySelector(".city_cigg").innerHTML = `<span><strong>CIGG: </strong> ${cigg}</span>`;
+}
+
+const addEventListenerForCitySelection = (data) => {
+    document.getElementById("citySelect").addEventListener("change", (e) => {
+        let value = e?.target?.value;
+        if(value === "null"){
+            document.querySelector(".city_info").style.display = "none";
+            return;
+        }
+        setSelectedCityCard(data, value);
+    })
 }
 
 const initializeApp = () => {
@@ -56,8 +76,8 @@ const initializeApp = () => {
     buildHeroContent(data);
     buildArticleHeader(data);
     buildParagraphs(data);
-    setCitySelectionTitle(data);
     generateCitySelectOptions(data);
+    addEventListenerForCitySelection(data);
 }
 
 initializeApp();
