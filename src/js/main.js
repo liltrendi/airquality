@@ -31,15 +31,33 @@ const buildParagraphs = (data) => {
     document.querySelector(".p_3_value").textContent = data.p_3_value;
     document.querySelector(".p_4_value").textContent = data.p_4_value;
     document.querySelector(".p_5_value").textContent = data.p_5_value;
+    document.querySelector(".p_6_value").textContent = data.p_6_value;
+    document.querySelector(".p_7_value").textContent = data.p_7_value;
+    document.querySelector(".p_8_value").textContent = data.p_8_value;
+    document.querySelector(".p_9_value").textContent = data.p_9_value;
+    document.querySelector(".p_10_value").textContent = data.p_10_value;
+}
+
+const setCitySelectionTitle = (data) => {
+    document.querySelector("#defaultSelectOption").textContent = data?.["compare-tabs_1_title"];
+}
+
+const generateCitySelectOptions = (data) => {
+    const cities = Object.keys(data)?.filter(item => item?.startsWith("compare-tabs_1_city_") && item?.endsWith("name"))?.map(item => ({name: data[item], value: item}));
+    let select = document.getElementById("citySelect");
+    for(let city of cities){
+        select.options[select.options.length] = new Option(city.name, city.value);
+    }
 }
 
 const initializeApp = () => {
     setLanguageInUse();
     let data = getJsonDataInLocale();
-    console.log("json", data);
     buildHeroContent(data);
     buildArticleHeader(data);
     buildParagraphs(data);
+    setCitySelectionTitle(data);
+    generateCitySelectOptions(data);
 }
 
 initializeApp();
