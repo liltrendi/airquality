@@ -16,7 +16,7 @@ Visit the ``index.html`` on your browser to view the site. Any changes you make 
 
 In the root of this project, run ``npm run build``, which will generate the required static files in the ``dist`` directory.
 
-As a side note, please copy the ``index.html`` file manually to the dist folder.
+As a side note, please copy the ``index.html`` file manually to the dist folder, and make sure to change the css import at the head to point to ``./main.css``, and the js import at the end of the body to point to ``./bundle.js``.
 
 # To do
 
